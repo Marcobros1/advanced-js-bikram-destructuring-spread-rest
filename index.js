@@ -1,32 +1,3 @@
-//RESUELVE LOS EJERCICIOS AQUÍ
-//
-// :crossed_swords: Bikram Destructuring, Spread, Rest — cierre: miércoles 21/10/2026 a las 13:00
-//
-// Cómo ver los tests: abre index.html en el navegador (Jasmine carga desde CDN).
-// Entrega: URL de tu repo público + captura de pantalla de los tests pasando.
-//
-// ---------------------------------------------------------------
-// NOTAS (leídas de js/index.spec.js, que es lo que de verdad valida):
-//  * Nombres exactos que buscan los tests:
-//      1 -> array empleados  + variable ana        (objeto completo de Ana)
-//      2 -> variable emailLuis                    ('Luis@gmail.com')
-//      3 -> variables a y b                       (al final a=3 y b=5)
-//      4 -> objeto HIGH_TEMPERATURES + maximaHoy (35) + maximaManana (32)
-//      5 -> sumEveryOther(...)
-//      6 -> addOnlyNums(...)
-//      7 -> countTheArgs(...)
-//      8 -> combineTwoArrays(arr1, arr2)
-//      9 -> onlyUniques(...)
-//      10 -> combineAllArrays(...)
-//      11 -> sumAndSquare(...)
-//  * Ojo: en el repo hay descripciones de tests con erratas (el texto no coincide con
-//    lo que comprueba el expect). Ejemplos: el test del ejercicio 6 dice "=14" pero
-//    espera 19; el del 10 llama con 3 arrays; el del 11 llama sumAndSquare(5, 10) y
-//    espera 125. SIEMPRE manda el expect(...), no la descripción.
-//  * Todos los ejercicios se llaman tal cual (camelCase) y deben ser globales.
-// ---------------------------------------------------------------
-
-
 //1.- Dado el objeto empleados, extrae la empleada Ana completa.
 
 const empleados = [
@@ -39,7 +10,7 @@ const empleados = [
 // y ana queda con el objeto completo { name: "Ana", email: "Ana@gmail.com" }.
 const [ , ana] = empleados;
 
-console.log([ , ana]);
+console.log("1. Objeto completo de Ana (saltando a Luis con el hueco [ , ana]):", ana);
 
 //2.- Dado el objeto empleados, extrae el email del empleado Luis --> Luis@gmail.com
 
@@ -47,7 +18,7 @@ console.log([ , ana]);
 // la sintaxis email: emailLuis guarda directamente el string 'Luis@gmail.com'.
 const [{ email: emailLuis }] = empleados;
 
-console.log([{ email: emailLuis }])
+console.log("2. Email de Luis extraído con renombrado (email: emailLuis):", emailLuis);
 
 //3.- Usa destructuración para cambiar los valores de a y b;
 
@@ -65,7 +36,7 @@ let b = 5;
 // sola línea, sin necesidad de una variable auxiliar.
 [a,b] = [b,a];
 
-console.log("A: " + a + " B: "+ b);
+console.log("3. Tras el swap [a, b] = [b, a], a = " + a + " y b = " + b);
 
 //4.- Dado el objeto HIGH_TEMPERATURES, cambiar las siguientes líneas para guardar mediante
 //    destructuración los valores de temperaturas en las variables maximaHoy y maximaManana
@@ -91,8 +62,8 @@ const {
   tomorrow: maximaManana
 } = HIGH_TEMPERATURES;
 
-console.log(maximaHoy);
-console.log(maximaManana);
+console.log("4. Máxima de hoy (propiedad today):", maximaHoy);
+console.log("4. Máxima de mañana (propiedad tomorrow):", maximaManana);
 
 //5.- Escribe una función llamada sumEveryOther que pueda recibir cualquier cantidad de números y devuelva la suma de todos los demás argumentos.
 /*
@@ -112,8 +83,8 @@ function sumEveryOther(...numeros) {
   return suma;
 }
 
-console.log(sumEveryOther(6, 8, 2, 3, 1));
-console.log(sumEveryOther(11, 3, 12));
+console.log("5. sumEveryOther(6, 8, 2, 3, 1) = 6+8+2+3+1:", sumEveryOther(6, 8, 2, 3, 1));
+console.log("5. sumEveryOther(11, 3, 12) = 11+3+12:", sumEveryOther(11, 3, 12));
 
 //6.- Escribe una función llamada addOnlyNums que pueda recibir cualquier número de argumentos (incluyendo números y strings y retorne la suma solo de los números).
 /*
@@ -130,7 +101,7 @@ function addOnlyNums(...numeros) {
   return suma;
 }
 
-console.log(addOnlyNums(1, "perro", 2, 4));
+console.log("6. addOnlyNums(1, 'perro', 2, 4) — suma solo los números, ignora 'perro':", addOnlyNums(1, "perro", 2, 4));
 
 //7.- Escribe una función llamada countTheArgs que pueda recibir cualquier número de argumentos y devuelva un número que indique cuántos argumentos ha recibido.
 /*
@@ -148,8 +119,8 @@ function countTheArgs(...args){
   return counter;
 }
 
-console.log(countTheArgs("gato", "perro"));
-console.log(countTheArgs("gato", "perro", "pollo", "oso"));
+console.log("7. countTheArgs('gato', 'perro') devuelve:", countTheArgs("gato", "perro"));
+console.log("7. countTheArgs('gato', 'perro', 'pollo', 'oso') devuelve:", countTheArgs("gato", "perro", "pollo", "oso"));
 
 //8.- Escribe una función llamada combineTwoArrays que reciba dos array cómo argumentos y devuelva solo un array que combine los dos (usando spread operator).
 
@@ -159,7 +130,7 @@ function combineTwoArrays(arr1, arr2) {
   return [...arr1, ...arr2];
 }
 
-console.log(combineTwoArrays([1, 2], [3, 4])); // [1, 2, 3, 4]
+console.log("8. combineTwoArrays([1, 2], [3, 4]) — un solo array concatenado:", combineTwoArrays([1, 2], [3, 4])); // [1, 2, 3, 4]
 
 //9.- Escriba una función llamada onlyUniques que acepte cualquier número de argumentos y devuelva un array de elementos únicos, sin repetidos.
 /*
@@ -181,8 +152,8 @@ function onlyUniques(...args) {
   return unique;
 }
 
-console.log(onlyUniques("gato", "pollo", "cerdo", "cerdo"));
-console.log(onlyUniques(1, 1, 2, 2, 3, 6, 7, 8));
+console.log("9. onlyUniques('gato', 'pollo', 'cerdo', 'cerdo') — sin repetidos:", onlyUniques("gato", "pollo", "cerdo", "cerdo"));
+console.log("9. onlyUniques(1, 1, 2, 2, 3, 6, 7, 8) — sin repetidos:", onlyUniques(1, 1, 2, 2, 3, 6, 7, 8));
 
 //10.- Escriba una función llamada combineAllArrays que pueda recibir cualquier cantidad de arrays como argumentos y los combine todos en un solo array.
 /*
@@ -200,8 +171,8 @@ function combineAllArrays(...arrays) {
   return finalArray;
 }
 
-console.log(combineAllArrays([3, 6, 7, 8], [2, 7, 3, 1]));
-console.log(combineAllArrays([2, 7, 3, 1], [2, 7, 4, 12], [2, 44, 22, 7, 3, 1]));
+console.log("10. combineAllArrays([3, 6, 7, 8], [2, 7, 3, 1]) — 2 arrays combinados:", combineAllArrays([3, 6, 7, 8], [2, 7, 3, 1]));
+console.log("10. combineAllArrays([2, 7, 3, 1], [2, 7, 4, 12], [2, 44, 22, 7, 3, 1]) — 3 arrays combinados:", combineAllArrays([2, 7, 3, 1], [2, 7, 4, 12], [2, 44, 22, 7, 3, 1]));
 
 //11.- Escriba una función llamada sumAndSquare que reciba cualquier número de argumentos, los eleve al cuadrado y devuelva la suma de todos los valores cuadrados.
 
@@ -214,3 +185,5 @@ function sumAndSquare(...args){
   }
   return suma;
 }
+
+console.log("11. sumAndSquare(5, 10) = 5² + 10²:", sumAndSquare(5, 10));
